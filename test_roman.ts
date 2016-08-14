@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "roman.h"
+#include "libroman.h"
 
 #test converts_one_to_I
-    ck_assert_str_eq("I", (rom_ConvertToRoman(1))
-    );
+        ck_assert('I' == rom_ToRoman(1));
