@@ -13,6 +13,14 @@ START_TEST(converts_one_to_I)
 {
 #line 5
         ck_assert_str_eq("I", rom_ToRoman(1));
+
+}
+END_TEST
+
+START_TEST(converts_five_to_V)
+{
+#line 8
+        ck_assert_str_eq("V", rom_ToRoman(5));
 }
 END_TEST
 
@@ -25,6 +33,7 @@ int main(void)
 
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, converts_one_to_I);
+    tcase_add_test(tc1_1, converts_five_to_V);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
