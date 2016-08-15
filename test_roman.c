@@ -22,13 +22,12 @@ START_TEST(converts_three_to_III)
 #line 8
         ck_assert_str_eq("III", rom_ToRoman(3));
 
-
 }
 END_TEST
 
 START_TEST(converts_four_to_IV)
 {
-#line 12
+#line 11
         ck_assert_str_eq("IV", rom_ToRoman(4));
 
 }
@@ -36,7 +35,7 @@ END_TEST
 
 START_TEST(converts_five_to_V)
 {
-#line 15
+#line 14
         ck_assert_str_eq("V", rom_ToRoman(5));
 
 }
@@ -44,9 +43,8 @@ END_TEST
 
 START_TEST(converts_forty_four_to_XCIV)
 {
-#line 18
+#line 17
         ck_assert_str_eq("XLIV", rom_ToRoman(44));
-
 }
 END_TEST
 
