@@ -1,12 +1,17 @@
 #include <libroman.h>
 #include <string.h>
+#include <stdio.h>
 
-const char * rom_ToRoman(int x) {
-  int i, ret;
-  for (i=0; i < sizeof(rom_numbers); i++) {
-    if (rom_numbers[i] == x) {
-      ret = i;
+char* rom_ToRoman(int x) {
+  int i;
+  char numeral[16];
+  memset(numeral, 0, 16);
+
+  for (i=0; i < sizeof(rom_numbers)/sizeof(int); i++) {
+    while (x >= rom_numbers[i]) { 
+      strcat(numeral, rom_numerals[i]);
+      x = x - rom_numbers[i];
     }
   }
-  return rom_numerals[ret];
+  return strdup(numeral);
 }

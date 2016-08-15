@@ -17,10 +17,36 @@ START_TEST(converts_one_to_I)
 }
 END_TEST
 
-START_TEST(converts_five_to_V)
+START_TEST(converts_three_to_III)
 {
 #line 8
+        ck_assert_str_eq("III", rom_ToRoman(3));
+
+
+}
+END_TEST
+
+START_TEST(converts_four_to_IV)
+{
+#line 12
+        ck_assert_str_eq("IV", rom_ToRoman(4));
+
+}
+END_TEST
+
+START_TEST(converts_five_to_V)
+{
+#line 15
         ck_assert_str_eq("V", rom_ToRoman(5));
+
+}
+END_TEST
+
+START_TEST(converts_forty_four_to_XCIV)
+{
+#line 18
+        ck_assert_str_eq("XLIV", rom_ToRoman(44));
+
 }
 END_TEST
 
@@ -33,7 +59,10 @@ int main(void)
 
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, converts_one_to_I);
+    tcase_add_test(tc1_1, converts_three_to_III);
+    tcase_add_test(tc1_1, converts_four_to_IV);
     tcase_add_test(tc1_1, converts_five_to_V);
+    tcase_add_test(tc1_1, converts_forty_four_to_XCIV);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
