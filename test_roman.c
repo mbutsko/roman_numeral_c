@@ -45,6 +45,14 @@ START_TEST(converts_forty_four_to_XCIV)
 {
 #line 17
         ck_assert_str_eq("XLIV", rom_ToRoman(44));
+
+}
+END_TEST
+
+START_TEST(converts_empty_to_zero)
+{
+#line 20
+        ck_assert_int_eq(0, rom_ToArabic(""));
 }
 END_TEST
 
@@ -61,6 +69,7 @@ int main(void)
     tcase_add_test(tc1_1, converts_four_to_IV);
     tcase_add_test(tc1_1, converts_five_to_V);
     tcase_add_test(tc1_1, converts_forty_four_to_XCIV);
+    tcase_add_test(tc1_1, converts_empty_to_zero);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

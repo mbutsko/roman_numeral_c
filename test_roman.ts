@@ -15,3 +15,6 @@
 
 #test converts_forty_four_to_XCIV
         ck_assert_str_eq("XLIV", rom_ToRoman(44));
+
+#test converts_empty_to_zero
+        ck_assert_int_eq(0, rom_ToArabic(""));

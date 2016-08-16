@@ -2,6 +2,10 @@
 #include <string.h>
 #include <stdio.h>
 
+int rom_ToArabic(char* rom) {
+  return 0;
+}
+
 char* rom_ToRoman(int x) {
   int i;
   char numeral[16];
