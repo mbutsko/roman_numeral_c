@@ -7,27 +7,35 @@
 
 #line 1 "test_roman.ts"
 #include <stdio.h>
-#include "libroman.h"
+#include "roman.h"
+
+START_TEST(converts_zero_to_empty_string)
+{
+#line 5
+        ck_assert_str_eq("", rom_ToRoman(0));
+
+}
+END_TEST
 
 START_TEST(converts_one_to_I)
 {
-#line 5
+#line 8
         ck_assert_str_eq("I", rom_ToRoman(1));
 
 }
 END_TEST
 
-START_TEST(converts_three_to_III)
+START_TEST(converts_string_of_numerals_to_arabic)
 {
-#line 8
+#line 11
         ck_assert_str_eq("III", rom_ToRoman(3));
 
 }
 END_TEST
 
-START_TEST(converts_four_to_IV)
+START_TEST(converts_multiple_digit_numerals_to_arabic)
 {
-#line 11
+#line 14
         ck_assert_str_eq("IV", rom_ToRoman(4));
 
 }
@@ -35,7 +43,7 @@ END_TEST
 
 START_TEST(converts_five_to_V)
 {
-#line 14
+#line 17
         ck_assert_str_eq("V", rom_ToRoman(5));
 
 }
@@ -43,7 +51,7 @@ END_TEST
 
 START_TEST(converts_forty_four_to_XCIV)
 {
-#line 17
+#line 20
         ck_assert_str_eq("XLIV", rom_ToRoman(44));
 
 }
@@ -51,8 +59,32 @@ END_TEST
 
 START_TEST(converts_empty_to_zero)
 {
-#line 20
+#line 23
         ck_assert_int_eq(0, rom_ToArabic(""));
+
+}
+END_TEST
+
+START_TEST(converts_I_to_one)
+{
+#line 26
+        ck_assert_int_eq(1, rom_ToArabic("I"));
+
+}
+END_TEST
+
+START_TEST(converts_single_term_roman_to_arabic)
+{
+#line 29
+        ck_assert_int_eq(100, rom_ToArabic("C"));
+
+}
+END_TEST
+
+START_TEST(converts_two_digit_single_term_roman_to_arabic)
+{
+#line 32
+        ck_assert_int_eq(9, rom_ToArabic("IX"));
 }
 END_TEST
 
@@ -64,12 +96,16 @@ int main(void)
     int nf;
 
     suite_add_tcase(s1, tc1_1);
+    tcase_add_test(tc1_1, converts_zero_to_empty_string);
     tcase_add_test(tc1_1, converts_one_to_I);
-    tcase_add_test(tc1_1, converts_three_to_III);
-    tcase_add_test(tc1_1, converts_four_to_IV);
+    tcase_add_test(tc1_1, converts_string_of_numerals_to_arabic);
+    tcase_add_test(tc1_1, converts_multiple_digit_numerals_to_arabic);
     tcase_add_test(tc1_1, converts_five_to_V);
     tcase_add_test(tc1_1, converts_forty_four_to_XCIV);
     tcase_add_test(tc1_1, converts_empty_to_zero);
+    tcase_add_test(tc1_1, converts_I_to_one);
+    tcase_add_test(tc1_1, converts_single_term_roman_to_arabic);
+    tcase_add_test(tc1_1, converts_two_digit_single_term_roman_to_arabic);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

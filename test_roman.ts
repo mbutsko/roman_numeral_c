@@ -1,13 +1,16 @@
 #include <stdio.h>
-#include "libroman.h"
+#include "roman.h"
+
+#test converts_zero_to_empty_string
+        ck_assert_str_eq("", rom_ToRoman(0));
 
 #test converts_one_to_I
         ck_assert_str_eq("I", rom_ToRoman(1));
 
-#test converts_three_to_III
+#test converts_string_of_numerals_to_arabic
         ck_assert_str_eq("III", rom_ToRoman(3));
 
-#test converts_four_to_IV
+#test converts_multiple_digit_numerals_to_arabic
         ck_assert_str_eq("IV", rom_ToRoman(4));
 
 #test converts_five_to_V
@@ -18,3 +21,12 @@
 
 #test converts_empty_to_zero
         ck_assert_int_eq(0, rom_ToArabic(""));
+
+#test converts_I_to_one
+        ck_assert_int_eq(1, rom_ToArabic("I"));
+
+#test converts_single_term_roman_to_arabic
+        ck_assert_int_eq(100, rom_ToArabic("C"));
+
+#test converts_two_digit_single_term_roman_to_arabic
+        ck_assert_int_eq(9, rom_ToArabic("IX"));
