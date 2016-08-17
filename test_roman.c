@@ -73,9 +73,17 @@ START_TEST(converts_I_to_one)
 }
 END_TEST
 
-START_TEST(converts_single_term_roman_to_arabic)
+START_TEST(converts_two_of_same_numeral_in_a_row)
 {
 #line 29
+        ck_assert_int_eq(2, rom_ToArabic("II"));
+
+}
+END_TEST
+
+START_TEST(converts_single_term_roman_to_arabic)
+{
+#line 32
         ck_assert_int_eq(100, rom_ToArabic("C"));
 
 }
@@ -83,8 +91,16 @@ END_TEST
 
 START_TEST(converts_two_digit_single_term_roman_to_arabic)
 {
-#line 32
+#line 35
         ck_assert_int_eq(9, rom_ToArabic("IX"));
+
+}
+END_TEST
+
+START_TEST(converts_multiple_two_digit_terms_roman_to_arabic)
+{
+#line 38
+        ck_assert_int_eq(29, rom_ToArabic("XXIX"));
 }
 END_TEST
 
@@ -104,8 +120,10 @@ int main(void)
     tcase_add_test(tc1_1, converts_forty_four_to_XCIV);
     tcase_add_test(tc1_1, converts_empty_to_zero);
     tcase_add_test(tc1_1, converts_I_to_one);
+    tcase_add_test(tc1_1, converts_two_of_same_numeral_in_a_row);
     tcase_add_test(tc1_1, converts_single_term_roman_to_arabic);
     tcase_add_test(tc1_1, converts_two_digit_single_term_roman_to_arabic);
+    tcase_add_test(tc1_1, converts_multiple_two_digit_terms_roman_to_arabic);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

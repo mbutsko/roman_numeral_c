@@ -25,8 +25,14 @@
 #test converts_I_to_one
         ck_assert_int_eq(1, rom_ToArabic("I"));
 
+#test converts_two_of_same_numeral_in_a_row
+        ck_assert_int_eq(2, rom_ToArabic("II"));
+
 #test converts_single_term_roman_to_arabic
         ck_assert_int_eq(100, rom_ToArabic("C"));
 
 #test converts_two_digit_single_term_roman_to_arabic
         ck_assert_int_eq(9, rom_ToArabic("IX"));
+
+#test converts_multiple_two_digit_terms_roman_to_arabic
+        ck_assert_int_eq(29, rom_ToArabic("XXIX"));
