@@ -25,7 +25,7 @@ START_TEST(add_multiple_single_numerals_to_get_a_subtractive)
 }
 END_TEST
 
-START_TEST(add_multiple_large_numerals)
+START_TEST(add_multiple_large_numerals_less_than_max)
 {
 #line 11
         ck_assert_str_eq(addRoman("CXXIV", "MIX"), "MCXXXIII");
@@ -33,9 +33,17 @@ START_TEST(add_multiple_large_numerals)
 }
 END_TEST
 
-START_TEST(subtract_one_from_two)
+START_TEST(added_numbers_above_max_returns_empty_string)
 {
 #line 14
+        ck_assert_str_eq(addRoman("MMM", "MMM"), "");
+
+}
+END_TEST
+
+START_TEST(subtract_one_from_two)
+{
+#line 17
         ck_assert_str_eq(subtractRoman("II", "I"), "I");
 
 }
@@ -43,7 +51,7 @@ END_TEST
 
 START_TEST(subtract_subtractive_from_larger_number)
 {
-#line 17
+#line 20
         ck_assert_str_eq(subtractRoman("X", "IV"), "VI");
 
 }
@@ -51,7 +59,7 @@ END_TEST
 
 START_TEST(smaller_minuend_results_in_error)
 {
-#line 20
+#line 23
         ck_assert_str_eq(subtractRoman("I", "II"), "");
 }
 END_TEST
@@ -66,7 +74,8 @@ int main(void)
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, add_one_to_one_to_get_two);
     tcase_add_test(tc1_1, add_multiple_single_numerals_to_get_a_subtractive);
-    tcase_add_test(tc1_1, add_multiple_large_numerals);
+    tcase_add_test(tc1_1, add_multiple_large_numerals_less_than_max);
+    tcase_add_test(tc1_1, added_numbers_above_max_returns_empty_string);
     tcase_add_test(tc1_1, subtract_one_from_two);
     tcase_add_test(tc1_1, subtract_subtractive_from_larger_number);
     tcase_add_test(tc1_1, smaller_minuend_results_in_error);

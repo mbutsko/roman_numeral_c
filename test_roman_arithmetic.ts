@@ -7,8 +7,11 @@
 #test add_multiple_single_numerals_to_get_a_subtractive
         ck_assert_str_eq(addRoman("II", "II"), "IV");
 
-#test add_multiple_large_numerals
+#test add_multiple_large_numerals_less_than_max
         ck_assert_str_eq(addRoman("CXXIV", "MIX"), "MCXXXIII");
+
+#test added_numbers_above_max_returns_empty_string
+        ck_assert_str_eq(addRoman("MMM", "MMM"), "");
 
 #test subtract_one_from_two
         ck_assert_str_eq(subtractRoman("II", "I"), "I");

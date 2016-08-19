@@ -10,11 +10,19 @@
 char* addRoman(char* augend, char* addend)
 {
   int arabicSum;
+  char *romanSum;
   arabicSum = toArabic(augend) + toArabic(addend);
-  return toRoman(arabicSum);
+  if (arabicSum < 4000) { 
+    romanSum = toRoman(arabicSum);
+  } else {
+    romanSum = "";
+  }
+  return romanSum;
 }
 
-/* Subtract two roman numerals */
+/* Subtract two roman numerals 
+ *
+ * Returns zero length string if minuend is less than subtrahend */
 char* subtractRoman(char* minuend, char* subtrahend)
 {
   int arabicDifference;
