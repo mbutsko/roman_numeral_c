@@ -5,20 +5,18 @@
 #ifndef ROMAN_H
 #define ROMAN_H
 
+/* Constants */
+extern const char* numerals[];
+extern const int numbers[];
+extern const int numeral_count;
+extern const int max_roman;
+
+/* Conversion functions */
 char *toRoman(int);
 int toArabic(char*);
 
+/* Arithmetic functions */
 char *addRoman(char*, char*);
 char *subtractRoman(char*, char*);
-
-static const char* numerals[] =
-    {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-
-static const int numbers[] =
-    { 1000, 900, 500, 400,  100,   90,  50,   40,  10,    9,   5,    4,  1 };
-
-static const int numeral_count = sizeof(numbers)/sizeof(int);
-
-static const int max_roman = 3999;
 
 #endif /* ROMAN_H */

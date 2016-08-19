@@ -6,6 +6,16 @@
 #include <stdio.h>
 #include <roman.h>
 
+const char* numerals[] =
+    {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+const int numbers[] =
+    { 1000, 900, 500, 400,  100,   90,  50,   40,  10,    9,   5,    4,  1 };
+
+const int numeral_count = sizeof(numbers)/sizeof(int);
+
+const int max_roman = 3999;
+
 /* Convert integer to Roman Numeral to integer. */
 int toArabic(char* numeral)
 {
