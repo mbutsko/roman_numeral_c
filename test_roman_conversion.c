@@ -25,9 +25,17 @@ START_TEST(converts_one_to_I)
 }
 END_TEST
 
-START_TEST(converts_string_of_numerals_to_arabic)
+START_TEST(negative_number_converts_to_empty_string)
 {
 #line 11
+        ck_assert_str_eq(toRoman(-1), "");
+
+}
+END_TEST
+
+START_TEST(converts_string_of_numerals_to_arabic)
+{
+#line 14
         ck_assert_str_eq(toRoman(3), "III");
 
 }
@@ -35,7 +43,7 @@ END_TEST
 
 START_TEST(converts_multiple_digit_numerals_to_arabic)
 {
-#line 14
+#line 17
         ck_assert_str_eq("IV", toRoman(4));
 
 }
@@ -43,7 +51,7 @@ END_TEST
 
 START_TEST(converts_five_to_V)
 {
-#line 17
+#line 20
         ck_assert_str_eq("V", toRoman(5));
 
 }
@@ -51,7 +59,7 @@ END_TEST
 
 START_TEST(converts_forty_four_to_XCIV)
 {
-#line 20
+#line 23
         ck_assert_str_eq("XLIV", toRoman(44));
 
 }
@@ -59,7 +67,7 @@ END_TEST
 
 START_TEST(converts_empty_to_zero)
 {
-#line 23
+#line 26
         ck_assert_int_eq(0, toArabic(""));
 
 }
@@ -67,7 +75,7 @@ END_TEST
 
 START_TEST(converts_I_to_one)
 {
-#line 26
+#line 29
         ck_assert_int_eq(1, toArabic("I"));
 
 }
@@ -75,7 +83,7 @@ END_TEST
 
 START_TEST(converts_two_of_same_numeral_in_a_row)
 {
-#line 29
+#line 32
         ck_assert_int_eq(2, toArabic("II"));
 
 }
@@ -83,7 +91,7 @@ END_TEST
 
 START_TEST(converts_single_term_roman_to_arabic)
 {
-#line 32
+#line 35
         ck_assert_int_eq(100, toArabic("C"));
 
 }
@@ -91,7 +99,7 @@ END_TEST
 
 START_TEST(converts_two_digit_single_term_roman_to_arabic)
 {
-#line 35
+#line 38
         ck_assert_int_eq(9, toArabic("IX"));
 
 }
@@ -99,7 +107,7 @@ END_TEST
 
 START_TEST(converts_multiple_two_digit_terms_roman_to_arabic)
 {
-#line 38
+#line 41
         ck_assert_int_eq(29, toArabic("XXIX"));
 }
 END_TEST
@@ -114,6 +122,7 @@ int main(void)
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, converts_zero_to_empty_string);
     tcase_add_test(tc1_1, converts_one_to_I);
+    tcase_add_test(tc1_1, negative_number_converts_to_empty_string);
     tcase_add_test(tc1_1, converts_string_of_numerals_to_arabic);
     tcase_add_test(tc1_1, converts_multiple_digit_numerals_to_arabic);
     tcase_add_test(tc1_1, converts_five_to_V);
