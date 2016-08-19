@@ -12,3 +12,6 @@
 
 #test subtract_one_from_two
         ck_assert_str_eq(subtractRoman("II", "I"), "I");
+
+#test subtract_subtractive_from_larger_number
+        ck_assert_str_eq(subtractRoman("X", "IV"), "VI");
