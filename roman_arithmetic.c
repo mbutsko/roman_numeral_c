@@ -9,5 +9,7 @@
 /* Add two roman numerals */
 char* addRoman(char* augend, char* addend)
 {
-  return "II";
+  int arabicSum;
+  arabicSum = toArabic(augend) + toArabic(addend);
+  return toRoman(arabicSum);
 }
