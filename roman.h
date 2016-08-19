@@ -8,6 +8,9 @@
 char *toRoman(int);
 int toArabic(char*);
 
+char *addRoman(char*, char*);
+char *subtractRoman(char*, char*);
+
 static const char* numerals[] =
     {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 

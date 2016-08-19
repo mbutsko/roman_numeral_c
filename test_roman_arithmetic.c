@@ -29,6 +29,14 @@ START_TEST(add_multiple_large_numerals)
 {
 #line 11
         ck_assert_str_eq(addRoman("CXXIV", "MIX"), "MCXXXIII");
+
+}
+END_TEST
+
+START_TEST(subtract_one_from_two)
+{
+#line 14
+        ck_assert_str_eq(subtractRoman("II", "I"), "I");
 }
 END_TEST
 
@@ -43,6 +51,7 @@ int main(void)
     tcase_add_test(tc1_1, add_one_to_one_to_get_two);
     tcase_add_test(tc1_1, add_multiple_single_numerals_to_get_a_subtractive);
     tcase_add_test(tc1_1, add_multiple_large_numerals);
+    tcase_add_test(tc1_1, subtract_one_from_two);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
