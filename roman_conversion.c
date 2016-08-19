@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <roman_conversion.h>
+#include <roman.h>
 
 /* Convert integer to Roman Numeral to integer. */
 int toArabic(char* numeral)

@@ -1,14 +1,14 @@
 #include <stdio.h>
-#include "roman_conversion.h"
+#include "roman.h"
 
 #test converts_zero_to_empty_string
-        ck_assert_str_eq("", toRoman(0));
+        ck_assert_str_eq(toRoman(0), "");
 
 #test converts_one_to_I
-        ck_assert_str_eq("I", toRoman(1));
+        ck_assert_str_eq(toRoman(1), "I");
 
 #test converts_string_of_numerals_to_arabic
-        ck_assert_str_eq("III", toRoman(3));
+        ck_assert_str_eq(toRoman(3), "III");
 
 #test converts_multiple_digit_numerals_to_arabic
         ck_assert_str_eq("IV", toRoman(4));
