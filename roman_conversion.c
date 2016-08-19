@@ -15,22 +15,13 @@ int toArabic(char* numeral)
   current_pos = 0;
 
   for (i=0; i < numeral_count; i++) {
-    if (current_pos >= strlen(numeral)) {
-      break;
-    }
-    if (strlen(numerals[i]) == 2) {
-      /* Two character numeral check */
-      if (strncmp(numerals[i], numeral + current_pos, 2) == 0) {
+
+    if (current_pos >= strlen(numeral)) { break; }
+
+    for (j=0; j < 3; ++j) {
+      if (strncmp(numerals[i], numeral + current_pos, strlen(numerals[i])) == 0) {
         arabic += numbers[i];
-        current_pos += 2;
-      }
-    } else {
-      /* Up to three single character numeral check */
-      for (j=0; j < 3; ++j) {
-        if (strncmp(numerals[i], numeral + current_pos, 1) == 0) {
-          arabic += numbers[i];
-          current_pos++;
-        }
+        current_pos += strlen(numerals[i]);
       }
     }
   }
