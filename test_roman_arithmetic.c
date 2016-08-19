@@ -45,6 +45,14 @@ START_TEST(subtract_subtractive_from_larger_number)
 {
 #line 17
         ck_assert_str_eq(subtractRoman("X", "IV"), "VI");
+
+}
+END_TEST
+
+START_TEST(smaller_minuend_results_in_error)
+{
+#line 20
+        ck_assert_str_eq(subtractRoman("I", "II"), "");
 }
 END_TEST
 
@@ -61,6 +69,7 @@ int main(void)
     tcase_add_test(tc1_1, add_multiple_large_numerals);
     tcase_add_test(tc1_1, subtract_one_from_two);
     tcase_add_test(tc1_1, subtract_subtractive_from_larger_number);
+    tcase_add_test(tc1_1, smaller_minuend_results_in_error);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

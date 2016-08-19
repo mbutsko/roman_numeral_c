@@ -15,3 +15,6 @@
 
 #test subtract_subtractive_from_larger_number
         ck_assert_str_eq(subtractRoman("X", "IV"), "VI");
+
+#test smaller_minuend_results_in_error
+        ck_assert_str_eq(subtractRoman("I", "II"), "");
