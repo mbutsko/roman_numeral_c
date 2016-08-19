@@ -29,7 +29,7 @@ int toArabic(char* numeral)
       for (j=0; j < 3; ++j) {
         if (strncmp(numerals[i], numeral + current_pos, 1) == 0) {
           arabic += numbers[i];
-          current_pos += 1;
+          current_pos++;
         }
       }
     }
@@ -47,7 +47,7 @@ char* toRoman(int x)
   for (i=0; i < numeral_count; i++) {
     while (x >= numbers[i]) { 
       strcat(numeral, numerals[i]);
-      x = x - numbers[i];
+      x -= numbers[i];
     }
   }
   return strdup(numeral);
