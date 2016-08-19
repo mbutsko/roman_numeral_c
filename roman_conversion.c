@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <roman.h>
+#include "roman.h"
 
 const char* numerals[] =
     {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -19,7 +19,8 @@ const int max_roman = 3999;
 /* Convert integer to Roman Numeral to integer. */
 int toArabic(char* numeral)
 {
-  int arabic, i, j, current_pos;
+  int arabic, i, j;
+  size_t current_pos;
 
   arabic = 0;
   current_pos = 0;

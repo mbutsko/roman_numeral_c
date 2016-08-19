@@ -1,13 +1,10 @@
 TEST_LIBS=-lcheck -lm -lrt -lpthread
-C_FLAGS=-I. -Wall 
+C_FLAGS=-I. -Wall -Wextra
 
-all: roman_conversion roman_arithmetic
+all: roman_arithmetic
 
-roman_conversion: roman_conversion.o
-	gcc $(C_FLAGS) -o roman_conversion roman_conversion.o
-
-roman_arithmetic: roman_arithmetic.o
-	gcc $(C_FLAGS) -o roman_arithmetic roman_arithmetic.o
+roman_arithmetic: roman_conversion.o roman_arithmetic.o 
+	gcc $(C_FLAGS) -o roman_arithmetic roman_conversion.o roman_arithmetic.o
 
 roman_conversion.o: roman_conversion.c roman.h
 	gcc $(C_FLAGS) -c roman_conversion.c

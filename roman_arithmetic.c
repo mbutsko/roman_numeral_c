@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <roman.h>
+#include "roman.h"
 
 /* Add two roman numerals
  *
@@ -32,4 +32,8 @@ char* subtractRoman(char* minuend, char* subtrahend)
   int arabicDifference;
   arabicDifference = toArabic(minuend) - toArabic(subtrahend);
   return toRoman(arabicDifference);
+}
+
+int main() {
+  return 0;
 }
