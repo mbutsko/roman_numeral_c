@@ -1,5 +1,3 @@
 test_roman_conversion
 test_roman_arithmetic
-roman_conversion
-roman_arithmetic
 *.o
