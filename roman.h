@@ -19,4 +19,6 @@ static const int numbers[] =
 
 static const int numeral_count = sizeof(numbers)/sizeof(int);
 
+static const int max_roman = 3999;
+
 #endif /* ROMAN_H */

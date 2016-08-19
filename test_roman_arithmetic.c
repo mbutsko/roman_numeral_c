@@ -33,7 +33,7 @@ START_TEST(add_multiple_large_numerals_less_than_max)
 }
 END_TEST
 
-START_TEST(added_numbers_above_max_returns_empty_string)
+START_TEST(sum_above_max_returns_empty_string)
 {
 #line 14
         ck_assert_str_eq(addRoman("MMM", "MMM"), "");
@@ -75,7 +75,7 @@ int main(void)
     tcase_add_test(tc1_1, add_one_to_one_to_get_two);
     tcase_add_test(tc1_1, add_multiple_single_numerals_to_get_a_subtractive);
     tcase_add_test(tc1_1, add_multiple_large_numerals_less_than_max);
-    tcase_add_test(tc1_1, added_numbers_above_max_returns_empty_string);
+    tcase_add_test(tc1_1, sum_above_max_returns_empty_string);
     tcase_add_test(tc1_1, subtract_one_from_two);
     tcase_add_test(tc1_1, subtract_subtractive_from_larger_number);
     tcase_add_test(tc1_1, smaller_minuend_results_in_error);

@@ -12,11 +12,13 @@ char* addRoman(char* augend, char* addend)
   int arabicSum;
   char *romanSum;
   arabicSum = toArabic(augend) + toArabic(addend);
-  if (arabicSum < 4000) { 
-    romanSum = toRoman(arabicSum);
-  } else {
+
+  if (arabicSum > max_roman) { 
     romanSum = "";
+  } else {
+    romanSum = toRoman(arabicSum);
   }
+
   return romanSum;
 }
 
