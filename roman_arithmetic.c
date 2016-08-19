@@ -34,6 +34,3 @@ char* subtractRoman(char* minuend, char* subtrahend)
   return toRoman(arabicDifference);
 }
 
-int main() {
-  return 0;
-}
