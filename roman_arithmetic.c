@@ -6,7 +6,9 @@
 #include <stdio.h>
 #include <roman.h>
 
-/* Add two roman numerals */
+/* Add two roman numerals
+ *
+ * Returns zero length string if sum is greater than max numeral */
 char* addRoman(char* augend, char* addend)
 {
   int arabicSum;
