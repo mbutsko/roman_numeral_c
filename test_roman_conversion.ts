@@ -39,3 +39,9 @@
 
 #test converts_multiple_two_digit_terms_roman_to_arabic
         ck_assert_int_eq(29, toArabic("XXIX"));
+
+#test does_not_convert_invalid_numeral
+        ck_assert_int_eq(5000, toArabic("XXIXX"));
+
+#test does_not_convert_too_many_ones_to_numeral
+        ck_assert_int_eq(5000, toArabic("IIII"));

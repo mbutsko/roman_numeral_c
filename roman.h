@@ -10,6 +10,8 @@ extern const char* numerals[];
 extern const int numbers[];
 extern const int numeral_count;
 extern const int max_roman;
+extern const int invalid_roman_code;
+extern const char *invalid_arabic_code;
 
 /* Conversion functions */
 char *toRoman(int);

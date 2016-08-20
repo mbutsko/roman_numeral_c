@@ -61,6 +61,14 @@ START_TEST(smaller_minuend_results_in_error)
 {
 #line 23
         ck_assert_str_eq(subtractRoman("I", "II"), "");
+
+}
+END_TEST
+
+START_TEST(invalid_numerals_results_in_error)
+{
+#line 26
+        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), "");
 }
 END_TEST
 
@@ -79,6 +87,7 @@ int main(void)
     tcase_add_test(tc1_1, subtract_one_from_two);
     tcase_add_test(tc1_1, subtract_subtractive_from_larger_number);
     tcase_add_test(tc1_1, smaller_minuend_results_in_error);
+    tcase_add_test(tc1_1, invalid_numerals_results_in_error);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

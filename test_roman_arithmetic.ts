@@ -21,3 +21,6 @@
 
 #test smaller_minuend_results_in_error
         ck_assert_str_eq(subtractRoman("I", "II"), "");
+
+#test invalid_numerals_results_in_error
+        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), "");

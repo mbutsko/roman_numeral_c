@@ -16,6 +16,9 @@ const int numeral_count = sizeof(numbers)/sizeof(int);
 
 const int max_roman = 3999;
 
+const int invalid_roman_code = 5000;
+const char *invalid_arabic_code = "";
+
 /* Convert integer to Roman Numeral to integer. */
 int toArabic(char* numeral)
 {
@@ -36,7 +39,14 @@ int toArabic(char* numeral)
       }
     }
   }
-  return arabic;
+  /* If we have not processed the last character, then the numeral was invalid. 
+   * Return error code. */
+  if (current_pos != strlen(numeral)) { 
+    return invalid_roman_code;
+  } else {
+    return arabic;
+  }
+
 }
 
 /* Convert integer to Roman Numeral */
