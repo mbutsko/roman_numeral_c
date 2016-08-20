@@ -3,6 +3,10 @@ Roman Numeral Arithmetic
 
 This is a simple implementation of roman numeral addition and subtraction.
 
+### Usage ###
+roman_math takes three arguments in an infix order; an operand, followed by an 
+operator, followed by a second operand.
+
 
 Development
 -----------
