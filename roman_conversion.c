@@ -6,11 +6,13 @@
 #include <stdio.h>
 #include "roman.h"
 
+const char* nonRepeating[] = { "D", "L", "V" };
 const char* numerals[] =
     {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
 const int numbers[] =
     { 1000, 900, 500, 400,  100,   90,  50,   40,  10,    9,   5,    4,  1 };
+
 
 const int numeral_count = sizeof(numbers)/sizeof(int);
 
@@ -36,6 +38,10 @@ int toArabic(char* numeral)
       if (strncmp(numerals[i], numeral + current_pos, strlen(numerals[i])) == 0) {
         arabic += numbers[i];
         current_pos += strlen(numerals[i]);
+        /* Non-repeating numerals */
+        if (isNonRepeating(numerals[i]) == 1) { 
+          break; 
+        }
       }
     }
   }
@@ -63,4 +69,15 @@ char* toRoman(int x)
     }
   }
   return strdup(numeral);
+}
+
+int isNonRepeating(const char *roman) {
+  size_t i;
+  for (i=0; i < sizeof(nonRepeating)/sizeof(nonRepeating[0]); i++) {
+    /* Non-repeating numeral or any subtractive */
+    if (strcmp(roman, nonRepeating[i]) == 0) {
+      return 1;
+    }
+  }
+  return 0;
 }

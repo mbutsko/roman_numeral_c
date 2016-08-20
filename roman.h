@@ -16,6 +16,7 @@ extern const char *invalid_arabic_code;
 /* Conversion functions */
 char *toRoman(int);
 int toArabic(char*);
+int isNonRepeating(const char*);
 
 /* Arithmetic functions */
 char *addRoman(char*, char*);

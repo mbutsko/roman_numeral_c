@@ -45,3 +45,6 @@
 
 #test does_not_convert_too_many_ones_to_numeral
         ck_assert_int_eq(5000, toArabic("IIII"));
+
+#test does_not_convert_sequence_of_non_repeating_numerals
+        ck_assert_int_eq(5000, toArabic("VV"));
