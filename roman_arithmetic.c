@@ -16,7 +16,7 @@ char* addRoman(char* augend, char* addend)
   arabicSum = toArabic(augend) + toArabic(addend);
 
   if (arabicSum > max_roman) { 
-    romanSum = "";
+    romanSum = strdup(invalid_arabic_code);
   } else {
     romanSum = toRoman(arabicSum);
   }
@@ -26,11 +26,14 @@ char* addRoman(char* augend, char* addend)
 
 /* Subtract two roman numerals 
  *
- * Returns zero length string if minuend is less than subtrahend */
+ * Returns error if minuend is less than subtrahend */
 char* subtractRoman(char* minuend, char* subtrahend)
 {
-  int arabicDifference;
-  arabicDifference = toArabic(minuend) - toArabic(subtrahend);
-  return toRoman(arabicDifference);
+  int arabicDifference  = toArabic(minuend) - toArabic(subtrahend);
+  if (arabicDifference > 0) {
+    return toRoman(arabicDifference);
+  } else {
+    return strdup(invalid_arabic_code);
+  }
 }
 

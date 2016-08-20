@@ -31,6 +31,12 @@
 #test converts_two_of_same_numeral_in_a_row
         ck_assert_int_eq(toArabic("II"), 2);
 
+#test converts_subtractive_of_non_repeating
+        ck_assert_int_eq(toArabic("IV"), 4);
+
+#test converts_non_repeating
+        ck_assert_int_eq(toArabic("V"), 5);
+
 #test converts_single_term_roman_to_arabic
         ck_assert_int_eq(toArabic("C"), 100);
 

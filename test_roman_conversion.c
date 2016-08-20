@@ -89,9 +89,25 @@ START_TEST(converts_two_of_same_numeral_in_a_row)
 }
 END_TEST
 
-START_TEST(converts_single_term_roman_to_arabic)
+START_TEST(converts_subtractive_of_non_repeating)
 {
 #line 35
+        ck_assert_int_eq(toArabic("IV"), 4);
+
+}
+END_TEST
+
+START_TEST(converts_non_repeating)
+{
+#line 38
+        ck_assert_int_eq(toArabic("V"), 5);
+
+}
+END_TEST
+
+START_TEST(converts_single_term_roman_to_arabic)
+{
+#line 41
         ck_assert_int_eq(toArabic("C"), 100);
 
 }
@@ -99,7 +115,7 @@ END_TEST
 
 START_TEST(converts_two_digit_single_term_roman_to_arabic)
 {
-#line 38
+#line 44
         ck_assert_int_eq(toArabic("IX"), 9);
 
 }
@@ -107,7 +123,7 @@ END_TEST
 
 START_TEST(converts_multiple_two_digit_terms_roman_to_arabic)
 {
-#line 41
+#line 47
         ck_assert_int_eq(toArabic("XXIX"), 29);
 
 }
@@ -115,7 +131,7 @@ END_TEST
 
 START_TEST(does_not_convert_invalid_numeral)
 {
-#line 44
+#line 50
         ck_assert_int_eq(toArabic("XXIXX"), invalid_roman_code);
 
 }
@@ -123,7 +139,7 @@ END_TEST
 
 START_TEST(does_not_convert_more_than_three_repeating_to_numeral)
 {
-#line 47
+#line 53
         ck_assert_int_eq(toArabic("IIII"), invalid_roman_code);
 
 }
@@ -131,7 +147,7 @@ END_TEST
 
 START_TEST(does_not_convert_sequence_of_non_repeating_numerals)
 {
-#line 50
+#line 56
         ck_assert_int_eq(toArabic("VV"), invalid_roman_code);
 
 }
@@ -139,7 +155,7 @@ END_TEST
 
 START_TEST(does_not_convert_sequence_of_non_repeating_numerals_subtractive)
 {
-#line 53
+#line 59
         ck_assert_int_eq(toArabic("IVIV"), invalid_roman_code);
 
 }
@@ -147,7 +163,7 @@ END_TEST
 
 START_TEST(does_not_convert_sequence_of_a_nonrepeating_numeral_and_its_subtractive)
 {
-#line 56
+#line 62
         ck_assert_int_eq(toArabic("VIV"), invalid_roman_code);
 }
 END_TEST
@@ -170,6 +186,8 @@ int main(void)
     tcase_add_test(tc1_1, converts_empty_to_error);
     tcase_add_test(tc1_1, converts_I_to_one);
     tcase_add_test(tc1_1, converts_two_of_same_numeral_in_a_row);
+    tcase_add_test(tc1_1, converts_subtractive_of_non_repeating);
+    tcase_add_test(tc1_1, converts_non_repeating);
     tcase_add_test(tc1_1, converts_single_term_roman_to_arabic);
     tcase_add_test(tc1_1, converts_two_digit_single_term_roman_to_arabic);
     tcase_add_test(tc1_1, converts_multiple_two_digit_terms_roman_to_arabic);

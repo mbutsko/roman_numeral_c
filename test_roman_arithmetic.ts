@@ -11,16 +11,28 @@
         ck_assert_str_eq(addRoman("CXXIV", "MIX"), "MCXXXIII");
 
 #test sum_above_max_returns_empty_string
-        ck_assert_str_eq(addRoman("MMM", "MMM"), "");
+        ck_assert_str_eq(addRoman("MMM", "MMM"), "ERROR");
+
+#test one_invalid_numeral_addition_results_in_error
+        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), invalid_arabic_code);
+
+#test invalid_numerals_addition_results_in_error
+        ck_assert_str_eq(subtractRoman("IAM", "PROBLEM"), invalid_arabic_code);
 
 #test subtract_one_from_two
         ck_assert_str_eq(subtractRoman("II", "I"), "I");
+
+#test subtract_subtractive_from_its_base
+        ck_assert_str_eq(subtractRoman("V", "IV"), "I");
 
 #test subtract_subtractive_from_larger_number
         ck_assert_str_eq(subtractRoman("X", "IV"), "VI");
 
 #test smaller_minuend_results_in_error
-        ck_assert_str_eq(subtractRoman("I", "II"), "");
+        ck_assert_str_eq(subtractRoman("I", "II"), invalid_arabic_code);
 
-#test invalid_numerals_results_in_error
-        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), "");
+#test one_invalid_numeral_subtraction_results_in_error
+        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), invalid_arabic_code);
+
+#test invalid_numerals_subtraction_results_in_error
+        ck_assert_str_eq(subtractRoman("IAM", "PROBLEM"), invalid_arabic_code);
