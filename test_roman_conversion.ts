@@ -1,53 +1,56 @@
 #include <stdio.h>
 #include "roman.h"
 
+#test converting_negative_number_results_in_error
+        ck_assert_str_eq(toRoman(-1), invalid_arabic_code);
+
 #test converts_zero_to_empty_string
-        ck_assert_str_eq(toRoman(0), "");
+        ck_assert_str_eq(toRoman(0), invalid_arabic_code);
 
 #test converts_one_to_I
         ck_assert_str_eq(toRoman(1), "I");
-
-#test negative_number_converts_to_empty_string
-        ck_assert_str_eq(toRoman(-1), "");
 
 #test converts_string_of_numerals_to_arabic
         ck_assert_str_eq(toRoman(3), "III");
 
 #test converts_multiple_digit_numerals_to_arabic
-        ck_assert_str_eq("IV", toRoman(4));
+        ck_assert_str_eq(toRoman(4), "IV");
 
 #test converts_five_to_V
-        ck_assert_str_eq("V", toRoman(5));
+        ck_assert_str_eq(toRoman(5), "V");
 
 #test converts_forty_four_to_XCIV
-        ck_assert_str_eq("XLIV", toRoman(44));
+        ck_assert_str_eq(toRoman(44), "XLIV");
 
-#test converts_empty_to_zero
-        ck_assert_int_eq(0, toArabic(""));
+#test converts_empty_to_error
+        ck_assert_int_eq(toArabic(""), 0);
 
 #test converts_I_to_one
-        ck_assert_int_eq(1, toArabic("I"));
+        ck_assert_int_eq(toArabic("I"), 1);
 
 #test converts_two_of_same_numeral_in_a_row
-        ck_assert_int_eq(2, toArabic("II"));
+        ck_assert_int_eq(toArabic("II"), 2);
 
 #test converts_single_term_roman_to_arabic
-        ck_assert_int_eq(100, toArabic("C"));
+        ck_assert_int_eq(toArabic("C"), 100);
 
 #test converts_two_digit_single_term_roman_to_arabic
-        ck_assert_int_eq(9, toArabic("IX"));
+        ck_assert_int_eq(toArabic("IX"), 9);
 
 #test converts_multiple_two_digit_terms_roman_to_arabic
-        ck_assert_int_eq(29, toArabic("XXIX"));
+        ck_assert_int_eq(toArabic("XXIX"), 29);
 
 #test does_not_convert_invalid_numeral
-        ck_assert_int_eq(5000, toArabic("XXIXX"));
+        ck_assert_int_eq(toArabic("XXIXX"), invalid_roman_code);
 
-#test does_not_convert_too_many_ones_to_numeral
-        ck_assert_int_eq(5000, toArabic("IIII"));
+#test does_not_convert_more_than_three_repeating_to_numeral
+        ck_assert_int_eq(toArabic("IIII"), invalid_roman_code);
 
 #test does_not_convert_sequence_of_non_repeating_numerals
-        ck_assert_int_eq(5000, toArabic("VV"));
+        ck_assert_int_eq(toArabic("VV"), invalid_roman_code);
 
 #test does_not_convert_sequence_of_non_repeating_numerals_subtractive
-        ck_assert_int_eq(5000, toArabic("IVIV"));
+        ck_assert_int_eq(toArabic("IVIV"), invalid_roman_code);
+
+#test does_not_convert_sequence_of_a_nonrepeating_numeral_and_its_subtractive
+        ck_assert_int_eq(toArabic("VIV"), invalid_roman_code);

@@ -9,26 +9,26 @@
 #include <stdio.h>
 #include "roman.h"
 
-START_TEST(converts_zero_to_empty_string)
+START_TEST(converting_negative_number_results_in_error)
 {
 #line 5
-        ck_assert_str_eq(toRoman(0), "");
+        ck_assert_str_eq(toRoman(-1), invalid_arabic_code);
+
+}
+END_TEST
+
+START_TEST(converts_zero_to_empty_string)
+{
+#line 8
+        ck_assert_str_eq(toRoman(0), invalid_arabic_code);
 
 }
 END_TEST
 
 START_TEST(converts_one_to_I)
 {
-#line 8
-        ck_assert_str_eq(toRoman(1), "I");
-
-}
-END_TEST
-
-START_TEST(negative_number_converts_to_empty_string)
-{
 #line 11
-        ck_assert_str_eq(toRoman(-1), "");
+        ck_assert_str_eq(toRoman(1), "I");
 
 }
 END_TEST
@@ -44,7 +44,7 @@ END_TEST
 START_TEST(converts_multiple_digit_numerals_to_arabic)
 {
 #line 17
-        ck_assert_str_eq("IV", toRoman(4));
+        ck_assert_str_eq(toRoman(4), "IV");
 
 }
 END_TEST
@@ -52,7 +52,7 @@ END_TEST
 START_TEST(converts_five_to_V)
 {
 #line 20
-        ck_assert_str_eq("V", toRoman(5));
+        ck_assert_str_eq(toRoman(5), "V");
 
 }
 END_TEST
@@ -60,15 +60,15 @@ END_TEST
 START_TEST(converts_forty_four_to_XCIV)
 {
 #line 23
-        ck_assert_str_eq("XLIV", toRoman(44));
+        ck_assert_str_eq(toRoman(44), "XLIV");
 
 }
 END_TEST
 
-START_TEST(converts_empty_to_zero)
+START_TEST(converts_empty_to_error)
 {
 #line 26
-        ck_assert_int_eq(0, toArabic(""));
+        ck_assert_int_eq(toArabic(""), 0);
 
 }
 END_TEST
@@ -76,7 +76,7 @@ END_TEST
 START_TEST(converts_I_to_one)
 {
 #line 29
-        ck_assert_int_eq(1, toArabic("I"));
+        ck_assert_int_eq(toArabic("I"), 1);
 
 }
 END_TEST
@@ -84,7 +84,7 @@ END_TEST
 START_TEST(converts_two_of_same_numeral_in_a_row)
 {
 #line 32
-        ck_assert_int_eq(2, toArabic("II"));
+        ck_assert_int_eq(toArabic("II"), 2);
 
 }
 END_TEST
@@ -92,7 +92,7 @@ END_TEST
 START_TEST(converts_single_term_roman_to_arabic)
 {
 #line 35
-        ck_assert_int_eq(100, toArabic("C"));
+        ck_assert_int_eq(toArabic("C"), 100);
 
 }
 END_TEST
@@ -100,7 +100,7 @@ END_TEST
 START_TEST(converts_two_digit_single_term_roman_to_arabic)
 {
 #line 38
-        ck_assert_int_eq(9, toArabic("IX"));
+        ck_assert_int_eq(toArabic("IX"), 9);
 
 }
 END_TEST
@@ -108,7 +108,7 @@ END_TEST
 START_TEST(converts_multiple_two_digit_terms_roman_to_arabic)
 {
 #line 41
-        ck_assert_int_eq(29, toArabic("XXIX"));
+        ck_assert_int_eq(toArabic("XXIX"), 29);
 
 }
 END_TEST
@@ -116,15 +116,15 @@ END_TEST
 START_TEST(does_not_convert_invalid_numeral)
 {
 #line 44
-        ck_assert_int_eq(5000, toArabic("XXIXX"));
+        ck_assert_int_eq(toArabic("XXIXX"), invalid_roman_code);
 
 }
 END_TEST
 
-START_TEST(does_not_convert_too_many_ones_to_numeral)
+START_TEST(does_not_convert_more_than_three_repeating_to_numeral)
 {
 #line 47
-        ck_assert_int_eq(5000, toArabic("IIII"));
+        ck_assert_int_eq(toArabic("IIII"), invalid_roman_code);
 
 }
 END_TEST
@@ -132,7 +132,7 @@ END_TEST
 START_TEST(does_not_convert_sequence_of_non_repeating_numerals)
 {
 #line 50
-        ck_assert_int_eq(5000, toArabic("VV"));
+        ck_assert_int_eq(toArabic("VV"), invalid_roman_code);
 
 }
 END_TEST
@@ -140,7 +140,15 @@ END_TEST
 START_TEST(does_not_convert_sequence_of_non_repeating_numerals_subtractive)
 {
 #line 53
-        ck_assert_int_eq(5000, toArabic("IVIV"));
+        ck_assert_int_eq(toArabic("IVIV"), invalid_roman_code);
+
+}
+END_TEST
+
+START_TEST(does_not_convert_sequence_of_a_nonrepeating_numeral_and_its_subtractive)
+{
+#line 56
+        ck_assert_int_eq(toArabic("VIV"), invalid_roman_code);
 }
 END_TEST
 
@@ -152,23 +160,24 @@ int main(void)
     int nf;
 
     suite_add_tcase(s1, tc1_1);
+    tcase_add_test(tc1_1, converting_negative_number_results_in_error);
     tcase_add_test(tc1_1, converts_zero_to_empty_string);
     tcase_add_test(tc1_1, converts_one_to_I);
-    tcase_add_test(tc1_1, negative_number_converts_to_empty_string);
     tcase_add_test(tc1_1, converts_string_of_numerals_to_arabic);
     tcase_add_test(tc1_1, converts_multiple_digit_numerals_to_arabic);
     tcase_add_test(tc1_1, converts_five_to_V);
     tcase_add_test(tc1_1, converts_forty_four_to_XCIV);
-    tcase_add_test(tc1_1, converts_empty_to_zero);
+    tcase_add_test(tc1_1, converts_empty_to_error);
     tcase_add_test(tc1_1, converts_I_to_one);
     tcase_add_test(tc1_1, converts_two_of_same_numeral_in_a_row);
     tcase_add_test(tc1_1, converts_single_term_roman_to_arabic);
     tcase_add_test(tc1_1, converts_two_digit_single_term_roman_to_arabic);
     tcase_add_test(tc1_1, converts_multiple_two_digit_terms_roman_to_arabic);
     tcase_add_test(tc1_1, does_not_convert_invalid_numeral);
-    tcase_add_test(tc1_1, does_not_convert_too_many_ones_to_numeral);
+    tcase_add_test(tc1_1, does_not_convert_more_than_three_repeating_to_numeral);
     tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_numerals);
     tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_numerals_subtractive);
+    tcase_add_test(tc1_1, does_not_convert_sequence_of_a_nonrepeating_numeral_and_its_subtractive);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
