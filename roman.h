@@ -6,18 +6,18 @@
 #define ROMAN_H
 
 /* Constants */
-extern const char* nonRepeating[];
-extern const char* numerals[];
-extern const int numbers[];
-extern const int numeral_count;
-extern const int max_roman;
-extern const int invalid_roman_code;
-extern const char *invalid_arabic_code;
+extern const char* NON_REPEATING[];
+extern const char* NUMERALS[];
+extern const int NUMBERS[];
+extern const int MAX_ROMAN;
+extern const int NUMERAL_COUNT;
+extern const int INVALID_ROMAN_CODE;
+extern const char *INVALID_ARABIC_CODE;
 
 /* Conversion functions */
 char *toRoman(int);
 int toArabic(char*);
-int isNonRepeating(const char*);
+int isNON_REPEATING(const char*);
 int isSubtractive(const char*);
 
 /* Arithmetic functions */

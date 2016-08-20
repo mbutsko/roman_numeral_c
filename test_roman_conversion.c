@@ -12,7 +12,7 @@
 START_TEST(converting_negative_number_results_in_error)
 {
 #line 5
-        ck_assert_str_eq(toRoman(-1), invalid_arabic_code);
+        ck_assert_str_eq(toRoman(-1), INVALID_ARABIC_CODE);
 
 }
 END_TEST
@@ -20,7 +20,7 @@ END_TEST
 START_TEST(converts_zero_to_empty_string)
 {
 #line 8
-        ck_assert_str_eq(toRoman(0), invalid_arabic_code);
+        ck_assert_str_eq(toRoman(0), INVALID_ARABIC_CODE);
 
 }
 END_TEST
@@ -33,7 +33,7 @@ START_TEST(converts_one_to_I)
 }
 END_TEST
 
-START_TEST(converts_string_of_numerals_to_arabic)
+START_TEST(converts_string_of_NUMERALS_to_arabic)
 {
 #line 14
         ck_assert_str_eq(toRoman(3), "III");
@@ -41,7 +41,7 @@ START_TEST(converts_string_of_numerals_to_arabic)
 }
 END_TEST
 
-START_TEST(converts_multiple_digit_numerals_to_arabic)
+START_TEST(converts_multiple_digit_NUMERALS_to_arabic)
 {
 #line 17
         ck_assert_str_eq(toRoman(4), "IV");
@@ -132,7 +132,7 @@ END_TEST
 START_TEST(does_not_convert_invalid_numeral)
 {
 #line 50
-        ck_assert_int_eq(toArabic("XXIXX"), invalid_roman_code);
+        ck_assert_int_eq(toArabic("XXIXX"), INVALID_ROMAN_CODE);
 
 }
 END_TEST
@@ -140,31 +140,31 @@ END_TEST
 START_TEST(does_not_convert_more_than_three_repeating_to_numeral)
 {
 #line 53
-        ck_assert_int_eq(toArabic("IIII"), invalid_roman_code);
+        ck_assert_int_eq(toArabic("IIII"), INVALID_ROMAN_CODE);
 
 }
 END_TEST
 
-START_TEST(does_not_convert_sequence_of_non_repeating_numerals)
+START_TEST(does_not_convert_sequence_of_non_repeating_NUMERALS)
 {
 #line 56
-        ck_assert_int_eq(toArabic("VV"), invalid_roman_code);
+        ck_assert_int_eq(toArabic("VV"), INVALID_ROMAN_CODE);
 
 }
 END_TEST
 
-START_TEST(does_not_convert_sequence_of_non_repeating_numerals_subtractive)
+START_TEST(does_not_convert_sequence_of_non_repeating_NUMERALS_subtractive)
 {
 #line 59
-        ck_assert_int_eq(toArabic("IVIV"), invalid_roman_code);
+        ck_assert_int_eq(toArabic("IVIV"), INVALID_ROMAN_CODE);
 
 }
 END_TEST
 
-START_TEST(does_not_convert_sequence_of_a_nonrepeating_numeral_and_its_subtractive)
+START_TEST(does_not_convert_sequence_of_a_NON_REPEATING_numeral_and_its_subtractive)
 {
 #line 62
-        ck_assert_int_eq(toArabic("VIV"), invalid_roman_code);
+        ck_assert_int_eq(toArabic("VIV"), INVALID_ROMAN_CODE);
 }
 END_TEST
 
@@ -179,8 +179,8 @@ int main(void)
     tcase_add_test(tc1_1, converting_negative_number_results_in_error);
     tcase_add_test(tc1_1, converts_zero_to_empty_string);
     tcase_add_test(tc1_1, converts_one_to_I);
-    tcase_add_test(tc1_1, converts_string_of_numerals_to_arabic);
-    tcase_add_test(tc1_1, converts_multiple_digit_numerals_to_arabic);
+    tcase_add_test(tc1_1, converts_string_of_NUMERALS_to_arabic);
+    tcase_add_test(tc1_1, converts_multiple_digit_NUMERALS_to_arabic);
     tcase_add_test(tc1_1, converts_five_to_V);
     tcase_add_test(tc1_1, converts_forty_four_to_XCIV);
     tcase_add_test(tc1_1, converts_empty_to_error);
@@ -193,9 +193,9 @@ int main(void)
     tcase_add_test(tc1_1, converts_multiple_two_digit_terms_roman_to_arabic);
     tcase_add_test(tc1_1, does_not_convert_invalid_numeral);
     tcase_add_test(tc1_1, does_not_convert_more_than_three_repeating_to_numeral);
-    tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_numerals);
-    tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_numerals_subtractive);
-    tcase_add_test(tc1_1, does_not_convert_sequence_of_a_nonrepeating_numeral_and_its_subtractive);
+    tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_NUMERALS);
+    tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_NUMERALS_subtractive);
+    tcase_add_test(tc1_1, does_not_convert_sequence_of_a_NON_REPEATING_numeral_and_its_subtractive);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

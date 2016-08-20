@@ -6,79 +6,79 @@
 #include <stdio.h>
 #include "roman.h"
 
-const char* nonRepeating[] = { "D", "L", "V" };
-const char* numerals[] =
-    {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-const int numbers[] =
-    { 1000, 900, 500, 400,  100,   90,  50,   40,  10,    9,   5,    4,  1 };
+const char* NON_REPEATING[] = { "D", "L", "V" };
+const char* NUMERALS[] =
+      {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+const int NUMBERS[] =
+      { 1000, 900, 500, 400,  100,   90,  50,   40,  10,    9,   5,    4,  1 };
 
-const int numeral_count = sizeof(numbers)/sizeof(int);
-const int max_roman = 3999;
-const int invalid_roman_code = 4000;
-const char *invalid_arabic_code = "ERROR";
+const int NUMERAL_COUNT = sizeof(NUMBERS)/sizeof(int);
+const int MAX_ROMAN = 3999;
+const int INVALID_ROMAN_CODE = 4000;
+const char *INVALID_ARABIC_CODE = "ERROR";
 
 /* Convert integer to Roman Numeral to integer. */
 int toArabic(char* numeral)
 {
-  int arabic, i, j, lastMatchIndex = 0;
-  size_t current_pos = 0;
+    int arabic, i, j, lastMatchIndex = 0;
+    size_t current_pos = 0;
 
-  arabic = 0;
+    arabic = 0;
 
-  for (i=0; i < numeral_count; i++) {
+    for (i=0; i < NUMERAL_COUNT; i++) {
 
-    if (current_pos >= strlen(numeral)) { break; }
+        if (current_pos >= strlen(numeral)) { break; }
 
-    for (j=0; j < 3; ++j) {
-      if (strncmp(numerals[i], numeral + current_pos, strlen(numerals[i])) == 0) {
-        if (isSubtractive(numerals[i]) == 1 && isNonRepeating(numerals[i-1]) == 1 && lastMatchIndex == i - 1) {  break;  }
-        arabic += numbers[i];
-        current_pos += strlen(numerals[i]);
-        lastMatchIndex = i;
-        /* Non-repeating numerals */
-        if (isNonRepeating(numerals[i]) == 1) {  break;  }
-      }
+        for (j=0; j < 3; ++j) {
+            if (strncmp(NUMERALS[i], numeral + current_pos, strlen(NUMERALS[i])) == 0) {
+                if (isSubtractive(NUMERALS[i]) == 1 && isNON_REPEATING(NUMERALS[i-1]) == 1 && lastMatchIndex == i - 1) {    break;    }
+                arabic += NUMBERS[i];
+                current_pos += strlen(NUMERALS[i]);
+                lastMatchIndex = i;
+                /* Non-repeating NUMERALS */
+                if (isNON_REPEATING(NUMERALS[i]) == 1) {    break;    }
+            }
+        }
     }
-  }
 
-  /* If we have not processed the last character, then the numeral was invalid. 
-   * Return error code. */
-  if (current_pos != strlen(numeral)) { arabic = invalid_roman_code; }
+    /* If we have not processed the last character, then the numeral was invalid.
+     * Return error code. */
+    if (current_pos != strlen(numeral)) { arabic = INVALID_ROMAN_CODE; }
 
-  return arabic;
+    return arabic;
 }
 
 /* Convert integer to Roman Numeral */
-char* toRoman(int x) 
+char* toRoman(int x)
 {
-  int i;
-  char numeral[16];
-  memset(numeral, 0, 16);
+    int i;
+    char numeral[16];
+    memset(numeral, 0, 16);
 
-  for (i=0; i < numeral_count; i++) {
-    while (x >= numbers[i]) { 
-      strcat(numeral, numerals[i]);
-      x -= numbers[i];
+    for (i=0; i < NUMERAL_COUNT; i++) {
+        while (x >= NUMBERS[i]) {
+            strcat(numeral, NUMERALS[i]);
+            x -= NUMBERS[i];
+        }
     }
-  }
-  if (strlen(numeral) == 0) { strcpy(numeral, invalid_arabic_code); }
-  return strdup(numeral);
+    if (strlen(numeral) == 0) { strcpy(numeral, INVALID_ARABIC_CODE); }
+    return strdup(numeral);
 }
 
-int isNonRepeating(const char *roman) {
-  size_t i;
-  for (i=0; i < sizeof(nonRepeating)/sizeof(nonRepeating[0]); i++) {
-    /* Non-repeating numeral or any subtractive */
-    if (strcmp(roman, nonRepeating[i]) == 0 || isSubtractive(roman)) {
-      return 1;
+int isNON_REPEATING(const char *roman) {
+    size_t i;
+    for (i=0; i < sizeof(NON_REPEATING)/sizeof(NON_REPEATING[0]); i++) {
+        /* Non-repeating numeral or any subtractive */
+        if (strcmp(roman, NON_REPEATING[i]) == 0 || isSubtractive(roman)) {
+            return 1;
+        }
     }
-  }
-  return 0;
+    return 0;
 }
 
 int isSubtractive(const char *roman) {
-  if (strlen(roman) > 1) {
-    return 1;
-  }
-  return 0;
+    if (strlen(roman) > 1) {
+        return 1;
+    }
+    return 0;
 }

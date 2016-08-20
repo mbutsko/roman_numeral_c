@@ -17,7 +17,7 @@ START_TEST(add_one_to_one_to_get_two)
 }
 END_TEST
 
-START_TEST(add_multiple_single_numerals_to_get_a_subtractive)
+START_TEST(add_multiple_single_NUMERALS_to_get_a_subtractive)
 {
 #line 8
         ck_assert_str_eq(addRoman("II", "II"), "IV");
@@ -25,7 +25,7 @@ START_TEST(add_multiple_single_numerals_to_get_a_subtractive)
 }
 END_TEST
 
-START_TEST(add_multiple_large_numerals_less_than_max)
+START_TEST(add_multiple_large_NUMERALS_less_than_max)
 {
 #line 11
         ck_assert_str_eq(addRoman("CXXIV", "MIX"), "MCXXXIII");
@@ -44,15 +44,15 @@ END_TEST
 START_TEST(one_invalid_numeral_addition_results_in_error)
 {
 #line 17
-        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), invalid_arabic_code);
+        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), INVALID_ARABIC_CODE);
 
 }
 END_TEST
 
-START_TEST(invalid_numerals_addition_results_in_error)
+START_TEST(invalid_NUMERALS_addition_results_in_error)
 {
 #line 20
-        ck_assert_str_eq(subtractRoman("IAM", "PROBLEM"), invalid_arabic_code);
+        ck_assert_str_eq(subtractRoman("IAM", "PROBLEM"), INVALID_ARABIC_CODE);
 
 }
 END_TEST
@@ -84,7 +84,7 @@ END_TEST
 START_TEST(smaller_minuend_results_in_error)
 {
 #line 32
-        ck_assert_str_eq(subtractRoman("I", "II"), invalid_arabic_code);
+        ck_assert_str_eq(subtractRoman("I", "II"), INVALID_ARABIC_CODE);
 
 }
 END_TEST
@@ -92,15 +92,15 @@ END_TEST
 START_TEST(one_invalid_numeral_subtraction_results_in_error)
 {
 #line 35
-        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), invalid_arabic_code);
+        ck_assert_str_eq(subtractRoman("I", "PROBLEM"), INVALID_ARABIC_CODE);
 
 }
 END_TEST
 
-START_TEST(invalid_numerals_subtraction_results_in_error)
+START_TEST(invalid_NUMERALS_subtraction_results_in_error)
 {
 #line 38
-        ck_assert_str_eq(subtractRoman("IAM", "PROBLEM"), invalid_arabic_code);
+        ck_assert_str_eq(subtractRoman("IAM", "PROBLEM"), INVALID_ARABIC_CODE);
 }
 END_TEST
 
@@ -113,17 +113,17 @@ int main(void)
 
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, add_one_to_one_to_get_two);
-    tcase_add_test(tc1_1, add_multiple_single_numerals_to_get_a_subtractive);
-    tcase_add_test(tc1_1, add_multiple_large_numerals_less_than_max);
+    tcase_add_test(tc1_1, add_multiple_single_NUMERALS_to_get_a_subtractive);
+    tcase_add_test(tc1_1, add_multiple_large_NUMERALS_less_than_max);
     tcase_add_test(tc1_1, sum_above_max_returns_empty_string);
     tcase_add_test(tc1_1, one_invalid_numeral_addition_results_in_error);
-    tcase_add_test(tc1_1, invalid_numerals_addition_results_in_error);
+    tcase_add_test(tc1_1, invalid_NUMERALS_addition_results_in_error);
     tcase_add_test(tc1_1, subtract_one_from_two);
     tcase_add_test(tc1_1, subtract_subtractive_from_its_base);
     tcase_add_test(tc1_1, subtract_subtractive_from_larger_number);
     tcase_add_test(tc1_1, smaller_minuend_results_in_error);
     tcase_add_test(tc1_1, one_invalid_numeral_subtraction_results_in_error);
-    tcase_add_test(tc1_1, invalid_numerals_subtraction_results_in_error);
+    tcase_add_test(tc1_1, invalid_NUMERALS_subtraction_results_in_error);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
