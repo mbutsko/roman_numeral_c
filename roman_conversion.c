@@ -75,9 +75,16 @@ int isNonRepeating(const char *roman) {
   size_t i;
   for (i=0; i < sizeof(nonRepeating)/sizeof(nonRepeating[0]); i++) {
     /* Non-repeating numeral or any subtractive */
-    if (strcmp(roman, nonRepeating[i]) == 0) {
+    if (strcmp(roman, nonRepeating[i]) == 0 || isSubtractive(roman)) {
       return 1;
     }
+  }
+  return 0;
+}
+
+int isSubtractive(const char *roman) {
+  if (strlen(roman) > 1) {
+    return 1;
   }
   return 0;
 }

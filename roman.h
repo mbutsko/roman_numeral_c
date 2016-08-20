@@ -6,6 +6,7 @@
 #define ROMAN_H
 
 /* Constants */
+extern const char* nonRepeating[];
 extern const char* numerals[];
 extern const int numbers[];
 extern const int numeral_count;
@@ -17,6 +18,7 @@ extern const char *invalid_arabic_code;
 char *toRoman(int);
 int toArabic(char*);
 int isNonRepeating(const char*);
+int isSubtractive(const char*);
 
 /* Arithmetic functions */
 char *addRoman(char*, char*);

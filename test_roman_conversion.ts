@@ -48,3 +48,6 @@
 
 #test does_not_convert_sequence_of_non_repeating_numerals
         ck_assert_int_eq(5000, toArabic("VV"));
+
+#test does_not_convert_sequence_of_non_repeating_numerals_subtractive
+        ck_assert_int_eq(5000, toArabic("IVIV"));

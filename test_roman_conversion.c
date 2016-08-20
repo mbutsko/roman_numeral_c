@@ -133,6 +133,14 @@ START_TEST(does_not_convert_sequence_of_non_repeating_numerals)
 {
 #line 50
         ck_assert_int_eq(5000, toArabic("VV"));
+
+}
+END_TEST
+
+START_TEST(does_not_convert_sequence_of_non_repeating_numerals_subtractive)
+{
+#line 53
+        ck_assert_int_eq(5000, toArabic("IVIV"));
 }
 END_TEST
 
@@ -160,6 +168,7 @@ int main(void)
     tcase_add_test(tc1_1, does_not_convert_invalid_numeral);
     tcase_add_test(tc1_1, does_not_convert_too_many_ones_to_numeral);
     tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_numerals);
+    tcase_add_test(tc1_1, does_not_convert_sequence_of_non_repeating_numerals_subtractive);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
