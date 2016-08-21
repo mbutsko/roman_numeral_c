@@ -19,12 +19,11 @@ const char *INVALID_ARABIC_CODE = "ERROR";
 /* Convert integer to Roman Numeral to integer. */
 int toArabic(const char* numeral)
 {
-    int arabic, i, j, lastMatchIndex = 0;
+    int i, arabic = 0, lastMatchIndex = 0;
     size_t current_pos = 0;
 
-    arabic = 0;
-
     for (i=0; i < NUMERAL_COUNT; i++) {
+        int j;
 
         if (current_pos >= strlen(numeral)) { break; }
 
