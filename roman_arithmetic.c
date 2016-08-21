@@ -6,8 +6,10 @@
 #include <stdio.h>
 #include "roman.h"
 
+const int MAX_ROMAN = 3999;
+
 /* Add two roman NUMERALS; returns ERROR if sum is greater than max numeral */
-char* addRoman(char* augend, char* addend)
+char* addRoman(const char* augend, const char* addend)
 {
     int arabicSum = toArabic(augend) + toArabic(addend);;
     char *romanSum;
@@ -23,7 +25,7 @@ char* addRoman(char* augend, char* addend)
 }
 
 /* Subtract two roman numerals;  Returns error if minuend < subtrahend */
-char* subtractRoman(char* minuend, char* subtrahend)
+char* subtractRoman(const char* minuend, const char* subtrahend)
 {
     int arabicDifference = toArabic(minuend) - toArabic(subtrahend);
     char *romanDifference;

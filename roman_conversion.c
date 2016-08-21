@@ -6,19 +6,18 @@
 #include <stdio.h>
 #include "roman.h"
 
-const char* NON_REPEATING[] = { "D", "L", "V" };
-const char* NUMERALS[] =
+static char* NON_REPEATING[] = { "D", "L", "V" };
+static char* NUMERALS[] =
       {  "M","CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-const int NUMBERS[] =
+static int NUMBERS[] =
       { 1000, 900, 500, 400,  100,   90,  50,   40,  10,    9,   5,    4,  1 };
 
-const int NUMERAL_COUNT = sizeof(NUMBERS)/sizeof(int);
-const int MAX_ROMAN = 3999;
+static int NUMERAL_COUNT = sizeof(NUMBERS)/sizeof(int);
 const int INVALID_ROMAN_CODE = 4000;
 const char *INVALID_ARABIC_CODE = "ERROR";
 
 /* Convert integer to Roman Numeral to integer. */
-int toArabic(char* numeral)
+int toArabic(const char* numeral)
 {
     int arabic, i, j, lastMatchIndex = 0;
     size_t current_pos = 0;
