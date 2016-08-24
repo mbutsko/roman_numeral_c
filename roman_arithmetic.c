@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "roman_arithmetic.h"
+#include "roman_conversion.h"
 
 const int MAX_ROMAN = 3999;
 
