@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "roman_arithmetic.h"
+#include "../roman_arithmetic.h"
 
 #test add_one_to_one_to_get_two
         ck_assert_str_eq(addRoman("I", "I"), "II");

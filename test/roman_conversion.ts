@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "roman_conversion.h"
+#include "../roman_conversion.h"
 
 #test converting_negative_number_results_in_error
         ck_assert_str_eq(toRoman(-1), INVALID_ARABIC_CODE);
