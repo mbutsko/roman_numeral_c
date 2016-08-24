@@ -1,25 +1,27 @@
 TEST_LIBS=-lcheck -lm -lrt -lpthread
+TEST_DIR=./test/
+SRC_DIR=./src/
 C_FLAGS=-I. -Wall -Wextra
 
 all: roman_arithmetic
 
-roman_arithmetic: main.o roman_conversion.o roman_arithmetic.o 
+roman_arithmetic: src/main.o src/roman_conversion.o src/roman_arithmetic.o 
 	gcc $(C_FLAGS) -o roman_math main.o roman_conversion.o roman_arithmetic.o
 
-main.o: main.c roman_conversion.h roman_arithmetic.h
-	gcc $(CFLAGS) -c main.c
+src/main.o: src/main.c src/roman_conversion.h src/roman_arithmetic.h
+	gcc $(CFLAGS) -c src/main.c
 
-roman_conversion.o: roman_conversion.c roman_conversion.h
-	gcc $(C_FLAGS) -c roman_conversion.c
+src/roman_conversion.o: src/roman_conversion.c src/roman_conversion.h
+	gcc $(C_FLAGS) -c src/roman_conversion.c
 
-roman_arithmetic.o: roman_arithmetic.c roman_arithmetic.h
-	gcc $(C_FLAGS) -c roman_arithmetic.c
+src/roman_arithmetic.o: src/roman_arithmetic.c src/roman_arithmetic.h
+	gcc $(C_FLAGS) -c src/roman_arithmetic.c
 
 .PHONEY: clean
 clean: 
-	-rm *o test/roman_conversion test/roman_arithmetic *.o
+	-rm roman_math test/roman_conversion test/roman_arithmetic *.o
 
-check: roman_conversion.o test/roman_conversion.ts roman_arithmetic.o test/roman_arithmetic.ts
+check: src/roman_conversion.o test/roman_conversion.ts src/roman_arithmetic.o test/roman_arithmetic.ts
 	checkmk test/roman_conversion.ts > test/roman_conversion.c
 	checkmk test/roman_arithmetic.ts > test/roman_arithmetic.c
 	gcc -o test/roman_conversion test/roman_conversion.c roman_conversion.o $(TEST_LIBS)
