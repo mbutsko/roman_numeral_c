@@ -6,13 +6,13 @@ all: roman_arithmetic
 roman_arithmetic: main.o roman_conversion.o roman_arithmetic.o 
 	gcc $(C_FLAGS) -o roman_math main.o roman_conversion.o roman_arithmetic.o
 
-main.o: main.c roman.h
+main.o: main.c roman_conversion.h roman_arithmetic.h
 	gcc $(CFLAGS) -c main.c
 
-roman_conversion.o: roman_conversion.c roman.h
+roman_conversion.o: roman_conversion.c roman_conversion.h
 	gcc $(C_FLAGS) -c roman_conversion.c
 
-roman_arithmetic.o: roman_arithmetic.c roman.h
+roman_arithmetic.o: roman_arithmetic.c roman_arithmetic.h
 	gcc $(C_FLAGS) -c roman_arithmetic.c
 
 .PHONEY: clean

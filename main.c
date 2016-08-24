@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "roman.h"
+#include "roman_conversion.h"
+#include "roman_arithmetic.h"
 
 int main(int argc, const char* argv[])
 {

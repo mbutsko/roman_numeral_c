@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include <stdio.h>
-#include "roman.h"
+#include "roman_arithmetic.h"
 
 const int MAX_ROMAN = 3999;
 

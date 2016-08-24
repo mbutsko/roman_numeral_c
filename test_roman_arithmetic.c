@@ -7,7 +7,7 @@
 
 #line 1 "test_roman_arithmetic.ts"
 #include <stdio.h>
-#include "roman.h"
+#include "roman_arithmetic.h"
 
 START_TEST(add_one_to_one_to_get_two)
 {

@@ -7,7 +7,7 @@
 
 #line 1 "test_roman_conversion.ts"
 #include <stdio.h>
-#include "roman.h"
+#include "roman_conversion.h"
 
 START_TEST(converting_negative_number_results_in_error)
 {
